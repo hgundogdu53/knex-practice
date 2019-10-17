@@ -3,8 +3,9 @@ const knex = require('knex')
 
 const knexInstance = knex({
     client: 'pg',
-    connection: 'process.env.DB_URL',
+    connection: process.env.DB_URL
 })
+
 
 console.log('knex and driver installed correctly');
 
@@ -15,7 +16,11 @@ knexInstance
     .then(result => {
         console.log(result)
     })
+    .catch(err => console.log(err))
+//const amazong_products = knexInstance.table('amazong_products');
+//const product = amazong_products.where({ name: 'Point of view gun' }).fetched()
 
+//console.log(product)
 
 function searchByProduceName(searchTerm) {
     knexInstance
